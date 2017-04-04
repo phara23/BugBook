@@ -3,7 +3,8 @@ An extremely simple command line tool for bug tracking that seeks to help progra
 
 This CL tool comes with two basic commands: add & search.
 
-add is used to write bugs and their solutions to a local file while search is used to query these existing stored bugs and solutions, looking for bugs similar to the one provided to the search command. 
+add is used to write bugs and their solutions to a local file while search is used to query these existing stored bugs and solutions, looking for bugs similar to the one provided in the search command. 
+======
 
 The add command can be invoked like so at the terminal:
 
