@@ -1,7 +1,7 @@
 # BugBook
 An extremely simple command line tool for bug tracking that seeks to help programmers avoid the headache of solving the same bug twice.
 
-This CL tool comes with two basic commands: add & search. Add is used to write bugs and their solutions to a local file while search is used to query these existing stored bugs and solutions, looking for bugs similar to the one provided in the search command. 
+This CL tool comes with three basic commands: add, search & listbugs. Add is used to write bugs and their solutions to a local file while search is used to query these existing stored bugs and solutions, looking for bugs similar to the one provided in the search command. listbugs simply lists all the relevant information for stored bugs. 
 
 
 ---------------------
@@ -28,3 +28,5 @@ python bugbook.py search "bugType" "techInvolved" "problemNotes"
 an example is:
 
 python bugbook.py search "run time crash" "xcode swift" "lots of anal and the app crashes with message asking me to check my anus"
+
+
