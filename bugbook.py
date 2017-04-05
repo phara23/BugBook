@@ -14,11 +14,12 @@ def cli():
 @click.argument('tech')
 @click.argument('problemnotes')
 @click.argument('solutionnotes')
+@click.argument('author')
 
 
-def add(title, category, tech, problemnotes, solutionnotes):
+def add(title, category, tech, problemnotes, solutionnotes, author):
 	if os.path.isfile('data.txt'):
-		click.echo('file exists')
+		#click.echo('file exists')
 		with open('data.txt') as json_file:
 			data = json.load(json_file)
 			data['bugs'].append({
@@ -26,12 +27,13 @@ def add(title, category, tech, problemnotes, solutionnotes):
 			    'type': category,
 			    'problemNotes': problemnotes,
 			    'tech': tech,
-			    'solutionNotes': solutionnotes
+			    'solutionNotes': solutionnotes,
+			    'author': author
 			})
 			with open('data.txt', 'w') as outfile:  
 				json.dump(data, outfile)
 	else:
-		click.echo('file doesnt exist')
+		#click.echo('file doesnt exist')
 		data = {}
 		data['bugs'] = []
 		data['bugs'].append({
@@ -39,7 +41,8 @@ def add(title, category, tech, problemnotes, solutionnotes):
 		    'type': category,
 		    'problemNotes': problemnotes,
 		    'tech': tech,
-		    'solutionNotes': solutionnotes
+		    'solutionNotes': solutionnotes,
+		    'author': author
 		})
 		with open('data.txt', 'w') as outfile:  
 			json.dump(data, outfile)
@@ -119,8 +122,23 @@ def search(category, tech, problemnotes):
 		click.echo("Soltuion: " + bestMatchSolution)
 		click.echo("\n")
 
+@click.command()
+def listbugs():
+	with open('data.txt') as json_file:
+		data = json.load(json_file)
+		for item in data['bugs']:
+			click.echo('---------------')
+			click.echo('Title: ' + item['title'])
+			click.echo('Error Type: ' + item['type'])
+			click.echo('Tech Involved: ' + item['tech'])
+			click.echo('Problem Notes: ' + item['problemNotes'])
+			click.echo('Solution Notes: ' + item['solutionNotes'])
+			click.echo('Author: ' + item['author'])
+
+
 cli.add_command(add)
 cli.add_command(search)
+cli.add_command(listbugs)
 
 
 
